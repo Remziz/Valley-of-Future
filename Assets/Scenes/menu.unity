@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 121407625}
   - component: {fileID: 121407624}
   - component: {fileID: 121407623}
+  - component: {fileID: 121407626}
   m_Layer: 5
   m_Name: Start Game
   m_TagString: Untagged
@@ -255,6 +256,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 121407621}
   m_CullTransparentMesh: 1
+--- !u!95 &121407626
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121407621}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5cecafc9f4c3328468191550918f02ad, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &437436058
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,6 +583,7 @@ GameObject:
   - component: {fileID: 700415908}
   - component: {fileID: 700415907}
   - component: {fileID: 700415906}
+  - component: {fileID: 700415909}
   m_Layer: 5
   m_Name: Exit game
   m_TagString: Untagged
@@ -682,6 +705,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 700415904}
   m_CullTransparentMesh: 1
+--- !u!95 &700415909
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700415904}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b760014a352d15d4bb8a860fd49ebd85, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1192063251
 GameObject:
   m_ObjectHideFlags: 0
