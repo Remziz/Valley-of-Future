@@ -7,6 +7,9 @@ public class Move : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            //MoneyTest
+            gMan gMan= FindObjectOfType<gMan>();
+            gMan.mnChange(5);
             velocity = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             velocity = new Vector3(velocity.x, velocity.y, 0);
             if (velocity.x < -8.5f) velocity.x = -8.5f;
