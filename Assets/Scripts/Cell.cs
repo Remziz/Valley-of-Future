@@ -11,7 +11,6 @@ public class Cell : MonoBehaviour
     public bool PlantReady;
     public int state;
     public float speed;
-    public bool Render;
     public Sprite Unpluged;
     public Sprite Pluged;
     public Sprite Watered;
@@ -24,31 +23,39 @@ public class Cell : MonoBehaviour
     public Sprite Potato1;
     public Sprite Potato2;
     public Sprite Potato3;
-    //private Dictionary<string, Dictionary<int, Sprite>> map = new Dictionary<string, Dictionary<int, Sprite>>()
-    //{
-        //["Hay"] = new Dictionary<int, Sprite>()
-        //{
-            //[1] = Hay1,
-            //[2] = Hay2,
-            //[3] = Hay3
-        //},
-        //["Cabbage"] = new Dictionary<int, Sprite>()
-        //{
-            //[1] = Cabbage1,
-            //[2] = Cabbage2,
-            //[3] = Cabbage3
-        //},
-        //["Potato"] = new Dictionary<int, Sprite>()
-        //{
-            //[1] = Potato1,
-            //[2] = Potato2,
-            //[3] = Potato3
-        //}
-    //};
-
+    public Sprite Svekla1;
+    public Sprite Svekla2;
+    public Sprite Svekla3;
+    public Sprite Cucumber1;
+    public Sprite Cucumber2;
+    public Sprite Cucumber3;
     public void tRender()
     {
-        Render = true;
+        if (watered) gameObject.GetComponent<SpriteRenderer>().sprite = Watered;
+            else if (plugged) gameObject.GetComponent<SpriteRenderer>().sprite = Pluged;
+            else gameObject.GetComponent<SpriteRenderer>().sprite = Unpluged;
+            if (state == 0) transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = null;
+            else if (state == 1){
+                if (Plant == "hay") transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Hay1;
+                else if(Plant == "cabbage") transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Cabbage1;
+                else if(Plant == "potato") transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Potato1;
+                else if(Plant == "svekla") transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Svekla1;
+                else transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Cucumber1;
+            }
+            else if (state == 2){
+                if (Plant == "hay") transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Hay2;
+                else if(Plant == "cabbage") transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Cabbage2;
+                else if(Plant == "potato") transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Potato2;
+                else if(Plant == "svekla") transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Svekla2;
+                else transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Cucumber2;
+            }
+            else {
+                if (Plant == "hay") transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Hay3;
+                else if(Plant == "cabbage") transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Cabbage3;
+                else if(Plant == "potato") transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Potato3;
+                else if(Plant == "svekla") transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Svekla3;
+                else transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Cucumber3;
+            }
     }
     public void ToPlant(string name)
     {
@@ -74,17 +81,4 @@ public class Cell : MonoBehaviour
         plugged = true; 
         tRender(); 
     }
-    private void Update()
-    {
-        if (Render)
-        {
-            if (watered) gameObject.GetComponent<SpriteRenderer>().sprite = Watered;
-            else if (plugged) gameObject.GetComponent<SpriteRenderer>().sprite = Pluged;
-            else gameObject.GetComponent<SpriteRenderer>().sprite = Unpluged;
-            if (state == 0) transform.GetChild(0).gameObject.GetComponentInParent<SpriteRenderer>().sprite = null;
-            else transform.GetChild(0).GetComponentInParent<SpriteRenderer>().sprite = map[Plant][state];
-            Render = false;
-        }
-    }
-
 }
