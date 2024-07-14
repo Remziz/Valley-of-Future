@@ -1,4 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Cell : MonoBehaviour
@@ -29,6 +32,14 @@ public class Cell : MonoBehaviour
     public Sprite Cucumber1;
     public Sprite Cucumber2;
     public Sprite Cucumber3;
+    private Dictionary<string, int> map = new Dictionary<string, int>()
+    {
+        ["hay"] = 130,
+        ["cabbage"] = 100,
+        ["potato"] = 130,
+        ["svekla"] = 110,
+        ["cucumber"] = 100 //кукуруза
+    };
     public void tRender()
     {
         if (watered) gameObject.GetComponent<SpriteRenderer>().sprite = Watered;
@@ -80,5 +91,39 @@ public class Cell : MonoBehaviour
     {
         plugged = true; 
         tRender(); 
+    }
+    IEnumerator TimeLine(float StartTime)
+    {
+        float WaterTime = StartTime;
+        bool PolFrame = true;
+        while(true)
+        {
+            float time = Time.time;
+            float delta = time - StartTime;
+            float Watdelta = time - WaterTime; 
+            if(delta >= map[Plant] / 2 && state == 1)
+            {
+                state++;
+                tRender();
+            }
+            else if(delta >= map[Plant] && state == 2) {
+                state++;
+                PlantReady = true;
+                tRender();
+                break;
+            }
+            if(PolFrame && Watdelta >= 30)
+            {
+                watered = false;
+                tRender();
+                PolFrame = false;
+            }
+            else if(watered && !PolFrame)
+            {
+                PolFrame = true;
+                WaterTime = time;
+            }
+            yield return new WaitForSeconds(1f);
+        }
     }
 }
