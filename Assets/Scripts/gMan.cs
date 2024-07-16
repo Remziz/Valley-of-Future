@@ -16,7 +16,7 @@ public class gMan : MonoBehaviour
         money+=amount;
         board.SetText("$:"+money);
     }
-    void Start(){
+    /*void Start(){
         // field script
         for (int i1 = 0; i1 < 14; i1++){
             for (int i2 = 0; i2 < 7; i2++){
@@ -33,8 +33,8 @@ public class gMan : MonoBehaviour
                 bster.transform.position = new Vector2(4f+i1,5f-i2);
                 bster.name = "bster_"+bster.transform.position.x + "_"+bster.transform.position.y;
             }
-        }*/
-    }
+        }
+    }*/
 
     // Update is called once per frame
     void Update()
