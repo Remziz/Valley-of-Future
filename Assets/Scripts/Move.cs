@@ -1,33 +1,44 @@
 using UnityEngine;
 
-public class Move : MonoBehaviour
+public class PlayerMovement2D : MonoBehaviour
 {
-    private Vector3 velocity = Vector3.zero;
-    private void Update()
+    public float speed = 5.0f;
+    public float stoppingDistance = 0.1f; // Adjust this value to control how close the player needs to be to stop
+    private Vector3 targetPosition;
+    private Rigidbody2D rb;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        targetPosition = transform.position;
+    }
+
+    void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            //MoneyTest
-            gMan gMan= FindObjectOfType<gMan>();
-            gMan.mnChange(5);
-            velocity = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            velocity = new Vector3(velocity.x, velocity.y, 0);
-            if (velocity.x < -8.5f) velocity.x = -8.5f;
-            if (velocity.x > 23.5f) velocity.x = 23.5f;
-            if (velocity.y < -10.5f) velocity.y = -10.5f;
-            if (velocity.x < 1)
-            {
-                if (velocity.y > 5.5f) velocity.y = 5.5f;
-            }
-            else
-            {
-                if (velocity.y > 7)
-                {
-                    velocity.y = 7;
-                }
-                if (velocity.x < 1 && velocity.y > 5.5) velocity.x = 1;
-            }
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            targetPosition = new Vector3(mousePosition.x, mousePosition.y, transform.position.z);
         }
-        transform.position = Vector3.MoveTowards(transform.position, velocity, 5f * Time.deltaTime);
+    }
+
+    void FixedUpdate()
+    {
+        MoveToTarget();
+    }
+
+    void MoveToTarget()
+    {
+        float distanceToTarget = Vector2.Distance(transform.position, targetPosition);
+
+        if (distanceToTarget > stoppingDistance)
+        {
+            Vector2 direction = (targetPosition - transform.position).normalized;
+            rb.velocity = direction * speed;
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
+        }
     }
 }
