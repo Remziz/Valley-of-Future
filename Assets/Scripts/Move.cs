@@ -3,13 +3,23 @@ using UnityEngine;
 public class PlayerMovement2D : MonoBehaviour
 {
     public float speed = 5.0f;
-    public float stoppingDistance = 0.01f; // Adjust this value to control how close the player needs to be to stop
+    public float stoppingDistance = 0.01f;
     private Vector3 targetPosition;
     private Rigidbody2D rb;
+
+    public Sprite[] leftAnimationSprites; // Array of sprites for left movement animation
+    public Sprite[] rightAnimationSprites; // Array of sprites for right movement animation
+    private SpriteRenderer spriteRenderer;
+    private float frameRate = 0.2f; // Time per frame
+    private float nextFrameTime = 0f;
+    private int currentFrameIndex = 0;
+    private bool isAnimating = false;
+    private bool isMovingLeft = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         targetPosition = transform.position;
     }
 
@@ -20,6 +30,20 @@ public class PlayerMovement2D : MonoBehaviour
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             targetPosition = new Vector3(mousePosition.x, mousePosition.y, transform.position.z);
             GameObject.Find("sma").gameObject.GetComponent<MemberActiveMenu>().Sbros_menu();
+        }
+
+        if (Time.time > nextFrameTime && isAnimating)
+        {
+            currentFrameIndex = (currentFrameIndex + 1) % 3; // Cycle through 0, 1, 2
+            nextFrameTime = Time.time + frameRate;
+            if (isMovingLeft)
+            {
+                spriteRenderer.sprite = leftAnimationSprites[currentFrameIndex];
+            }
+            else
+            {
+                spriteRenderer.sprite = rightAnimationSprites[currentFrameIndex];
+            }
         }
     }
 
@@ -36,10 +60,14 @@ public class PlayerMovement2D : MonoBehaviour
         {
             Vector2 direction = (targetPosition - transform.position).normalized;
             rb.velocity = direction * speed;
+            isAnimating = true;
+            isMovingLeft = direction.x < 0;
         }
         else
         {
             rb.velocity = Vector2.zero;
+            isAnimating = false;
+            currentFrameIndex = 0; // Reset to first frame
         }
     }
 }
