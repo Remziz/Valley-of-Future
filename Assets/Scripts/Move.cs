@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerMovement2D : MonoBehaviour
 {
     public float speed = 5.0f;
-    public float stoppingDistance = 0.1f; // Adjust this value to control how close the player needs to be to stop
+    public float stoppingDistance = 0.01f; // Adjust this value to control how close the player needs to be to stop
     private Vector3 targetPosition;
     private Rigidbody2D rb;
 
