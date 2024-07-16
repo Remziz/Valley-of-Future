@@ -5,6 +5,7 @@ public class PlayerMovement2D : MonoBehaviour
     public float speed = 5.0f;
     public float stoppingDistance = 0.01f;
     private Vector3 targetPosition;
+    public GameObject Menu;
     private Rigidbody2D rb;
 
     public Sprite[] leftAnimationSprites; // Array of sprites for left movement animation
@@ -29,7 +30,7 @@ public class PlayerMovement2D : MonoBehaviour
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             targetPosition = new Vector3(mousePosition.x, mousePosition.y, transform.position.z);
-            GameObject.Find("sma").gameObject.GetComponent<MemberActiveMenu>().Sbros_menu();
+            Menu.GetComponent<MemberActiveMenu>().Sbros_menu();
         }
 
         if (Time.time > nextFrameTime && isAnimating)

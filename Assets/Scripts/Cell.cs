@@ -40,17 +40,9 @@ public class Cell : MonoBehaviour
         ["corn"] = 100 //��������
     };
     private GameObject plantsprite;
-    private GameObject menu;
-    private GameObject firstBG;
-    private GameObject secondBG;
-    private GameObject thirdBG;
     private void Start()
     {
         plantsprite = transform.GetChild(0).gameObject;
-        menu = transform.GetChild(1).gameObject;
-        firstBG = menu.transform.GetChild(0).gameObject;
-        secondBG = menu.transform.GetChild(1).gameObject;
-        thirdBG = menu.transform.GetChild(2).gameObject;
     }
     public void tRender()
     {
@@ -79,16 +71,6 @@ public class Cell : MonoBehaviour
                 else if(Plant == "svekla") plantsprite.GetComponent<SpriteRenderer>().sprite = Beet3;
                 else plantsprite.GetComponent<SpriteRenderer>().sprite = Corn3;
             }
-    }
-    public void CloseMenu()
-    {
-        menu.SetActive(false);
-        firstBG.SetActive(false);
-        secondBG.SetActive(false);
-        thirdBG.SetActive(false);
-        thirdBG.transform.GetChild(0).gameObject.SetActive(false);
-        thirdBG.transform.GetChild(1).gameObject.SetActive(false);
-        thirdBG.transform.GetChild(2).gameObject.SetActive(false);
     }
     public void ToPlant(string name)
     {
@@ -173,33 +155,5 @@ public class Cell : MonoBehaviour
     {
         GameObject.Find("sma").gameObject.GetComponent<MemberActiveMenu>().Sbros_menu();
         gameObject.GetComponent<Animator>().SetTrigger("Go");
-        menu.SetActive(true);
-        GameObject.Find("sma").gameObject.GetComponent<MemberActiveMenu>().active_cell = gameObject.name;
-        if (!plugged)
-        {
-            firstBG.SetActive(true);
-        }
-        else if(Plant == "")
-        {
-            secondBG.SetActive(true);
-        }
-        else
-        {
-            if (PlantReady)
-            {
-                thirdBG.SetActive(true);
-                thirdBG.transform.GetChild(2).gameObject.SetActive(true);
-            }
-            else if (!watered)
-            {
-                thirdBG.SetActive(true);
-                thirdBG.transform.GetChild(1).gameObject.SetActive(true);
-            }
-            else if (plantsprite.GetComponent<SpriteRenderer>().sprite == Die)
-            {
-                thirdBG.SetActive(true);
-                thirdBG.transform.GetChild(0).gameObject.SetActive(true);
-            }
-        }
     }
 }
