@@ -7,6 +7,22 @@ MonoImporter:
   - Unpluged: {fileID: 21300000, guid: 358bb941074fa5541ba038f83a9bafbe, type: 3}
   - Pluged: {fileID: 21300000, guid: 0cd0ca9d21a1c7e4284243907f91853a, type: 3}
   - Watered: {fileID: 21300000, guid: dc85ece08971db7489cac78afd9a6870, type: 3}
+  - Hay1: {fileID: 21300000, guid: 15816aaaab1331949ad5d7eab5c6956b, type: 3}
+  - Hay2: {fileID: 21300000, guid: 479fcf239aa212d4ea585a31df5857a3, type: 3}
+  - Hay3: {fileID: 21300000, guid: 43845f12905dd024abdf6898d4ed143f, type: 3}
+  - Cabbage1: {fileID: 21300000, guid: 7a61930ddb510e045a1dd2d9f53d5e62, type: 3}
+  - Cabbage2: {fileID: 21300000, guid: 1416c55847827864f9628d44369de38b, type: 3}
+  - Cabbage3: {fileID: 21300000, guid: 7f1608fa256237943884c0256a10110e, type: 3}
+  - Potato1: {fileID: 21300000, guid: 313b15775b24e304aa2658c8ab0b9aba, type: 3}
+  - Potato2: {fileID: 21300000, guid: d10e9f9606d6b5c4285cea2e6227094d, type: 3}
+  - Potato3: {fileID: 21300000, guid: 9befce36e7ff3754bbc10e324afeb2a3, type: 3}
+  - Beet1: {fileID: 21300000, guid: ed323f77df7a5444d8ff49322806fc79, type: 3}
+  - Beet2: {fileID: 21300000, guid: a334d9664a3fcd64ca5ea101402ceddc, type: 3}
+  - Beet3: {fileID: 21300000, guid: cd5ec7e691897214b97fadf3e072e06d, type: 3}
+  - Corn1: {fileID: 21300000, guid: d49b818ad4c2d3741920ef7a79ef00af, type: 3}
+  - Corn2: {fileID: 21300000, guid: b9b1d63b9b70bb84cbf403688a5f5f90, type: 3}
+  - Corn3: {fileID: 21300000, guid: ed23980a599749f4baca4818aa270c2e, type: 3}
+  - Die: {fileID: 21300000, guid: a4f30d2ecfa4eb44089759afa7e60763, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
