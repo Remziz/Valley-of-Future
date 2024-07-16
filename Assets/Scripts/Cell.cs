@@ -172,7 +172,7 @@ public class Cell : MonoBehaviour
     private void OnMouseDown()
     {
         GameObject.Find("sma").gameObject.GetComponent<MemberActiveMenu>().Sbros_menu();
-        gameObject.GetComponent<Animator>().SetTrigger(0);
+        gameObject.GetComponent<Animator>().SetTrigger("Go");
         menu.SetActive(true);
         GameObject.Find("sma").gameObject.GetComponent<MemberActiveMenu>().active_cell = gameObject.name;
         if (!plugged)

@@ -15,12 +15,12 @@ public class PlayerMovement2D : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             targetPosition = new Vector3(mousePosition.x, mousePosition.y, transform.position.z);
+            GameObject.Find("sma").gameObject.GetComponent<MemberActiveMenu>().Sbros_menu();
         }
-        else if (Input.GetMouseButtonDown(1)) GameObject.Find("sma").gameObject.GetComponent<MemberActiveMenu>().Sbros_menu();
     }
 
     void FixedUpdate()
