@@ -26,20 +26,22 @@ public class Cell : MonoBehaviour
     public Sprite Potato1;
     public Sprite Potato2;
     public Sprite Potato3;
-    public Sprite Svekla1;
-    public Sprite Svekla2;
-    public Sprite Svekla3;
-    public Sprite Cucumber1;
-    public Sprite Cucumber2;
-    public Sprite Cucumber3;
+    public Sprite Beet1;
+    public Sprite Beet2;
+    public Sprite Beet3;
+    public Sprite Corn1;
+    public Sprite Corn2;
+    public Sprite Corn3;
     private Dictionary<string, int> map = new Dictionary<string, int>()
     {
         ["hay"] = 130,
         ["cabbage"] = 100,
         ["potato"] = 130,
-        ["svekla"] = 110,
-        ["cucumber"] = 100 //кукуруза
+        ["beet"] = 110,
+        ["corn"] = 100 //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     };
+    //private void Awake(){tRender();}
+
     public void tRender()
     {
         if (watered) gameObject.GetComponent<SpriteRenderer>().sprite = Watered;
@@ -50,22 +52,22 @@ public class Cell : MonoBehaviour
                 if (Plant == "hay") transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Hay1;
                 else if(Plant == "cabbage") transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Cabbage1;
                 else if(Plant == "potato") transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Potato1;
-                else if(Plant == "svekla") transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Svekla1;
-                else transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Cucumber1;
+                else if(Plant == "beet") transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Beet1;
+                else transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Corn1;
             }
             else if (state == 2){
                 if (Plant == "hay") transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Hay2;
                 else if(Plant == "cabbage") transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Cabbage2;
                 else if(Plant == "potato") transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Potato2;
-                else if(Plant == "svekla") transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Svekla2;
-                else transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Cucumber2;
+                else if(Plant == "beet") transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Beet2;
+                else transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Corn2;
             }
             else {
                 if (Plant == "hay") transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Hay3;
                 else if(Plant == "cabbage") transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Cabbage3;
                 else if(Plant == "potato") transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Potato3;
-                else if(Plant == "svekla") transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Svekla3;
-                else transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Cucumber3;
+                else if(Plant == "beet") transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Beet3;
+                else transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Corn3;
             }
     }
     public void ToPlant(string name)
