@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
+    public GameObject Menu;
     public bool UnderWaterPump;
     public bool plugged;
     public bool watered;
@@ -89,6 +90,7 @@ public class Cell : MonoBehaviour
     {
         state = 0;
         plugged = false;
+        watered = false;
         PlantReady = false;
         Plant = "";
         tRender();
@@ -104,6 +106,7 @@ public class Cell : MonoBehaviour
         watered = false;
         Plant = "";
         state = 0;
+        tRender();
     }
     IEnumerator TimeLine(float StartTime)
     {
@@ -125,7 +128,7 @@ public class Cell : MonoBehaviour
                 state++;
                 PlantReady = true;
                 tRender();
-                break;
+                yield break;
             }
             if(PolFrame && Watdelta >= 30)
             {
@@ -146,14 +149,16 @@ public class Cell : MonoBehaviour
             {
                 NoPolFrame = false;
                 plantsprite.GetComponent<SpriteRenderer>().sprite = Die;
-                break;
+                yield break;
             }
             yield return new WaitForSeconds(1f);
         }
     }
     private void OnMouseDown()
     {
-        GameObject.Find("sma").gameObject.GetComponent<MemberActiveMenu>().Sbros_menu();
+        Menu.GetComponent<MemberActiveMenu>().Sbros_menu();
         gameObject.GetComponent<Animator>().SetTrigger("Go");
+        Menu.GetComponent<MemberActiveMenu>().active_cell = gameObject.name;
+        Menu.GetComponent<MemberActiveMenu>().MenuStart();
     }
 }

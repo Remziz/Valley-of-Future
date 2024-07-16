@@ -13,6 +13,9 @@ public class MemberActiveMenu : MonoBehaviour
     public void Sbros_menu()
     {
         gameObject.SetActive(false);
+        f = transform.GetChild(0).gameObject;
+        s = transform.GetChild(1).gameObject;
+        t = transform.GetChild(2).gameObject;
         f.SetActive(false);
         s.SetActive(false);
         t.SetActive(false);
@@ -38,14 +41,17 @@ public class MemberActiveMenu : MonoBehaviour
     public void Collect()
     {
         GameObject.Find(active_cell).gameObject.GetComponent<Cell>().Collect();
+        Sbros_menu();
     }
     public void Clean()
     {
         GameObject.Find(active_cell).gameObject.GetComponent<Cell>().Clean();
+        Sbros_menu();
     }
     public void MenuStart()
     {
-        if (!GameObject.Find(active_cell).gameObject.GetComponent<Cell>().Pluged)
+        gameObject.SetActive(true);
+        if (!GameObject.Find(active_cell).gameObject.GetComponent<Cell>().plugged)
         {
             f.SetActive(true);
         }
@@ -56,17 +62,18 @@ public class MemberActiveMenu : MonoBehaviour
         else
         {
             t.SetActive(true);
-            if (!GameObject.Find(active_cell).gameObject.GetComponent<Cell>().watered)
-            {
-                t.transform.GetChild(0).gameObject.SetActive(true);
-            }
-            if (GameObject.Find(active_cell).gameObject.GetComponent<SpriteRenderer>().sprite == GameObject.Find(active_cell).gameObject.GetComponent<Cell>().Die)
+            if (GameObject.Find(active_cell).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite == GameObject.Find(active_cell).gameObject.GetComponent<Cell>().Die)
             {
                 t.transform.GetChild(1).gameObject.SetActive(true);
             }
-            if (GameObject.Find(active_cell).gameObject.GetComponent<Cell>().PlantReady)
+
+            else if (GameObject.Find(active_cell).gameObject.GetComponent<Cell>().PlantReady)
             {
                 t.transform.GetChild(2).gameObject.SetActive(true);
+            }
+            else if (!GameObject.Find(active_cell).gameObject.GetComponent<Cell>().watered)
+            {
+                t.transform.GetChild(0).gameObject.SetActive(true);
             }
         }
     }
