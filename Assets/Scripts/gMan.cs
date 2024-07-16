@@ -17,8 +17,8 @@ public class gMan : MonoBehaviour
     }
     void Start(){
         // field script
-        for (int i1 = 0; i1 < 19; i1++){
-            for (int i2 = 0; i2 < 11; i2++){
+        for (int i1 = 0; i1 < 14; i1++){
+            for (int i2 = 0; i2 < 7; i2++){
                 GameObject fland = Instantiate(flandP);
                 fland.transform.position = new Vector2(3.5f+i1,5.5f-i2);
             }
