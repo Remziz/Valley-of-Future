@@ -20,7 +20,7 @@ public class learningBook : MonoBehaviour
          Book = transform.GetChild(0).gameObject;
     }
 
-    private void OnMouseDown()
+    public void Clic()
     {
         if (!bookOpen)
         {

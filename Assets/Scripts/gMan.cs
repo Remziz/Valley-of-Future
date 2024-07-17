@@ -25,9 +25,6 @@ public class gMan : MonoBehaviour
                 fland.name = "fland_"+i1 + "_"+i2;
             }
         }
-        GameObject wtrp;
-        wtrp = Instantiate(bsterP);
-        wtrp.transform.position = new Vector2(4.5f,4.5f);
     }
 
     // Update is called once per frame

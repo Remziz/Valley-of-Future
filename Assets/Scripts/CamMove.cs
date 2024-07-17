@@ -24,7 +24,7 @@ public class CameraController : MonoBehaviour
         isMoving = (playerTransform.position != lastPlayerPosition);
         lastPlayerPosition = playerTransform.position;
 
-        if (!isMoving)
+        if (isMoving)
         {
             // Apply a small shake effect
             newCamPosition += new Vector3(Random.Range(-shakeAmount, shakeAmount), Random.Range(-shakeAmount, shakeAmount), 0);

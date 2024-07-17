@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Cell : MonoBehaviour
@@ -47,12 +48,12 @@ public class Cell : MonoBehaviour
     private GameObject plantsprite;
     private void Awake()
     {
-        Menu = GameObject.Find("Canvas").transform.GetChild(1).gameObject;
+        Menu = GameObject.Find("Canvas").transform.GetChild(2).gameObject;
         plantsprite = transform.GetChild(0).gameObject;
     }
     public void tRender()
     {
-        if (watered) gameObject.GetComponent<SpriteRenderer>().sprite = Watered;
+        if (watered && plugged) gameObject.GetComponent<SpriteRenderer>().sprite = Watered;
             else if (plugged) gameObject.GetComponent<SpriteRenderer>().sprite = Pluged;
             else gameObject.GetComponent<SpriteRenderer>().sprite = Unpluged;
             if (state == 0) plantsprite.GetComponent<SpriteRenderer>().sprite = null;
@@ -91,11 +92,11 @@ public class Cell : MonoBehaviour
         BWater = true;
         waterer = Instantiate(bsterP);
         waterer.transform.position = transform.position;
-        //waterer.GetComponent<Booster>().Init(gameObject.name);
+        waterer.GetComponent<Booster>().Init(gameObject.name);
     }
-    public void underBoost(){
-        UnderWaterPump = true;
-        watered = true;
+    public void underBoost(bool value){
+        UnderWaterPump = value;
+        watered = value;
         tRender();
     }
     public void Water()
@@ -121,7 +122,7 @@ public class Cell : MonoBehaviour
     {
         plugged = false;
         watered = false;
-        if (BWater) Destroy(waterer);
+        if (BWater) waterer.GetComponent<Booster>().Kill(gameObject.name); Destroy(waterer); UnderWaterPump = false;
         BLamp = false;
         BWater = false;
         Plant = "";
@@ -144,13 +145,17 @@ public class Cell : MonoBehaviour
                 state++;
                 tRender();
             }
+            if (UnderWaterPump)
+            {
+                WaterTime = Time.time;
+            }
             else if(delta >= map[Plant] && state == 2) {
                 state++;
                 PlantReady = true;
                 tRender();
                 yield break;
             }
-            if(PolFrame && Watdelta >= 30 && !UnderWaterPump)
+            if(PolFrame && Watdelta >= 30)
             {
                 watered = false;
                 tRender();
