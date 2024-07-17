@@ -18,6 +18,7 @@ public class gMan : MonoBehaviour
     }
     void Start(){
         Time.timeScale = 1;
+        mnChange(100);
         // field script
         for (int i1 = 0; i1 < 14; i1++){
             for (int i2 = 0; i2 < 7; i2++){
