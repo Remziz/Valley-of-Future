@@ -37,6 +37,7 @@ public class Cell : MonoBehaviour
     public Sprite Die;
     private GameObject waterer;
     [SerializeField] private GameObject bsterP;
+    private gMan gman;
     private Dictionary<string, int> map = new Dictionary<string, int>()
     {
         ["hay"] = 130,
@@ -49,6 +50,7 @@ public class Cell : MonoBehaviour
     private void Awake()
     {
         Menu = GameObject.Find("Canvas").transform.GetChild(2).gameObject;
+        gman = FindObjectOfType<gMan>();
         plantsprite = transform.GetChild(0).gameObject;
     }
     public void tRender()
@@ -61,21 +63,21 @@ public class Cell : MonoBehaviour
                 if (Plant == "hay") plantsprite.GetComponent<SpriteRenderer>().sprite = Hay1;
                 else if(Plant == "cabbage") plantsprite.GetComponent<SpriteRenderer>().sprite = Cabbage1;
                 else if(Plant == "potato") plantsprite.GetComponent<SpriteRenderer>().sprite = Potato1;
-                else if(Plant == "svekla") plantsprite.GetComponent<SpriteRenderer>().sprite = Beet1;
+                else if(Plant == "beet") plantsprite.GetComponent<SpriteRenderer>().sprite = Beet1;
                 else plantsprite.GetComponent<SpriteRenderer>().sprite = Corn1;
             }
             else if (state == 2){
                 if (Plant == "hay") plantsprite.GetComponent<SpriteRenderer>().sprite = Hay2;
                 else if(Plant == "cabbage") plantsprite.GetComponent<SpriteRenderer>().sprite = Cabbage2;
                 else if(Plant == "potato") plantsprite.GetComponent<SpriteRenderer>().sprite = Potato2;
-                else if(Plant == "svekla") plantsprite.GetComponent<SpriteRenderer>().sprite = Beet2;
+                else if(Plant == "beet") plantsprite.GetComponent<SpriteRenderer>().sprite = Beet2;
                 else plantsprite.GetComponent<SpriteRenderer>().sprite = Corn2;
             }
             else {
                 if (Plant == "hay") plantsprite.GetComponent<SpriteRenderer>().sprite = Hay3;
                 else if(Plant == "cabbage") plantsprite.GetComponent<SpriteRenderer>().sprite = Cabbage3;
                 else if(Plant == "potato") plantsprite.GetComponent<SpriteRenderer>().sprite = Potato3;
-                else if(Plant == "svekla") plantsprite.GetComponent<SpriteRenderer>().sprite = Beet3;
+                else if(Plant == "beet") plantsprite.GetComponent<SpriteRenderer>().sprite = Beet3;
                 else plantsprite.GetComponent<SpriteRenderer>().sprite = Corn3;
             }
     }
@@ -106,6 +108,11 @@ public class Cell : MonoBehaviour
     }
     public void Collect()
     {
+        if (Plant == "hay") gman.mnChange(20);
+        else if(Plant == "cabbage") gman.mnChange(40);
+        else if(Plant == "potato") gman.mnChange(80);
+        else if(Plant == "beet") gman.mnChange(100);
+        else gman.mnChange(120);
         state = 0;
         plugged = false;
         watered = false;
@@ -118,8 +125,7 @@ public class Cell : MonoBehaviour
         plugged = true; 
         tRender(); 
     }
-    public void Clean()
-    {
+    public void Clean(){
         plugged = false;
         watered = false;
         if (BWater) waterer.GetComponent<Booster>().Kill(gameObject.name); Destroy(waterer); UnderWaterPump = false;

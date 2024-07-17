@@ -9,7 +9,6 @@ public class Booster : MonoBehaviour
 {
     public bool water;
     int i1, i2;
-    // not working
     public void Init(string set_cell){
         var splitted = set_cell.Split('_');
         i1 = Convert.ToInt32(splitted[1]);
@@ -19,9 +18,6 @@ public class Booster : MonoBehaviour
         if(i2!=0)GameObject.Find("fland_"+i1+"_"+(i2-1)).GetComponent<Cell>().underBoost(true);
         if(i2!=6)GameObject.Find("fland_"+i1+"_"+(i2+1)).GetComponent<Cell>().underBoost(true);
     }
-    //void Awake(){
-        //Init("fland_1_0");
-    //}
     public void Kill(string set_cell)
     {
         var splitted = set_cell.Split('_');
