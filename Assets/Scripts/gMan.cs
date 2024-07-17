@@ -22,9 +22,12 @@ public class gMan : MonoBehaviour
             for (int i2 = 0; i2 < 7; i2++){
                 GameObject fland = Instantiate(flandP);           
                 fland.transform.position = new Vector2(3.5f+i1,5.5f-i2);
-                fland.name = "fland_"+fland.transform.position.x + "_"+fland.transform.position.y;
+                fland.name = "fland_"+i1 + "_"+i2;
             }
         }
+        GameObject wtrp;
+        wtrp = Instantiate(bsterP);
+        wtrp.transform.position = new Vector2(4.5f,4.5f);
     }
 
     // Update is called once per frame
