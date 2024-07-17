@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Main Camera.prefab.meta
 guid: 959fd1ed40ec57543a56f06748d4d285
 PrefabImporter:
+========
+guid: 7fcec47fb7fd6154eb510518012ef64d
+folderAsset: yes
+DefaultImporter:
+>>>>>>>> 722f7cda527318c59cddf106c65b50e65dde175b:Assets/UI Toolkit.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
