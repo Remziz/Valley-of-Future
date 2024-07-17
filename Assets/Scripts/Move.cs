@@ -17,11 +17,17 @@ public class PlayerMovement2D : MonoBehaviour
     private bool isAnimating = false;
     private bool isMovingLeft = false;
 
+    public AudioClip footstepSound; // Sound clip for footsteps
+    private AudioSource audioSource;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         targetPosition = transform.position;
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = footstepSound;
+        audioSource.loop = true;
     }
 
     void Update()
@@ -63,12 +69,18 @@ public class PlayerMovement2D : MonoBehaviour
             rb.velocity = direction * speed;
             isAnimating = true;
             isMovingLeft = direction.x < 0;
+
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
         }
         else
         {
             rb.velocity = Vector2.zero;
             isAnimating = false;
             currentFrameIndex = 0; // Reset to first frame
+            audioSource.Stop();
         }
     }
 }
