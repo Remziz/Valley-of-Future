@@ -185,7 +185,7 @@ public class Cell : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
     }
-    private void OnMouseDown()
+    public void MouseDown()
     {
         Menu.GetComponent<MemberActiveMenu>().Sbros_menu();
         gameObject.GetComponent<Animator>().SetTrigger("Go");

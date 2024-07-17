@@ -38,15 +38,15 @@ public class CameraController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))    //≈сли кнопка мыши нажата
         {
-            //ѕускаем луч из камеры по координатам курсора мышки и получаем все коллайдеры которые пересекает луч.
             RaycastHit2D[] hit = Physics2D.RaycastAll(cam.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-            //ѕеречисл€ем массив всех полученых коллайдеров.
             for (int i = 0; i < hit.Length; i++)
             {
-                if (hit[i].collider.CompareTag("Player"))   //≈сли находим коллайдер с тегом "Player"
+                if (hit[i].collider.name == "PauseMenu")   //≈сли находим коллайдер с тегом "Player"
                 {
-                    //“о фиксируем клик.
-                    Debug.Log("Click");
+                    break;
+                }
+                else if (hit[i].collider.name == "Menu")
+                {
                     break;
                 }
             }
