@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
-    public GameObject Menu;
+    private GameObject Menu;
     public bool UnderWaterPump;
     public bool plugged;
     public bool watered;
@@ -41,8 +41,9 @@ public class Cell : MonoBehaviour
         ["corn"] = 100 //��������
     };
     private GameObject plantsprite;
-    private void Start()
+    private void Awake()
     {
+        Menu = GameObject.Find("Canvas").transform.GetChild(1).gameObject;
         plantsprite = transform.GetChild(0).gameObject;
     }
     public void tRender()

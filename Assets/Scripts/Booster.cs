@@ -9,6 +9,7 @@ public class Booster : MonoBehaviour
     // not working
     void Awake(){
         if(water){
+            Debug.Log("fland_"+(transform.position.x-0.5f)+"_"+(transform.position.y-0.5f));
             GameObject.Find("fland_"+(transform.position.x-0.5f)+"_"+(transform.position.y-0.5f)).GetComponent<Cell>().UnderWaterPump = true;
             GameObject.Find("fland_"+(transform.position.x-0.5f)+"_"+(transform.position.y+0.5f)).GetComponent<Cell>().UnderWaterPump = true;
             GameObject.Find("fland_"+(transform.position.x+0.5f)+"_"+(transform.position.y-0.5f)).GetComponent<Cell>().UnderWaterPump = true;
