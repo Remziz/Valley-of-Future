@@ -4,9 +4,9 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-  public GameObject pauseMenu; // Панель меню паузы
-  public Button resumeButton; // Кнопка продолжения игры
-  public Button mainMenuButton; // Кнопка выхода в главное меню
+  public GameObject pauseMenu;
+  public Button resumeButton;
+  public Button mainMenuButton;
 
   void Start()
   {
@@ -17,7 +17,6 @@ public class PauseMenu : MonoBehaviour
 
   void Update()
   {
-    // Проверка нажатия на кнопку ESC
     if (Input.GetKeyDown(KeyCode.Escape))
     {
       if (Time.timeScale == 1)
@@ -33,7 +32,6 @@ public class PauseMenu : MonoBehaviour
 
   public void Pause()
   {
-    // Пауза игры
     Time.timeScale = 0;
     pauseMenu.SetActive(true);
   }
@@ -46,7 +44,6 @@ public class PauseMenu : MonoBehaviour
   }
   public void MainMenu()
   {
-    // Выход в главное меню
     SceneManager.LoadScene("menu");
   }
 }

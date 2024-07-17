@@ -10,10 +10,12 @@ public class CameraController : MonoBehaviour
 
     private Vector3 lastPlayerPosition;
     private bool isMoving;
+    private Camera cam;
 
     void Start()
     {
         lastPlayerPosition = playerTransform.position;
+        cam = Camera.main;
     }
 
     void FixedUpdate()
@@ -31,5 +33,23 @@ public class CameraController : MonoBehaviour
         }
 
         transform.position = Vector3.Lerp(transform.position, newCamPosition, camPositionSpeed * Time.deltaTime);
+    }
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))    //≈сли кнопка мыши нажата
+        {
+            //ѕускаем луч из камеры по координатам курсора мышки и получаем все коллайдеры которые пересекает луч.
+            RaycastHit2D[] hit = Physics2D.RaycastAll(cam.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            //ѕеречисл€ем массив всех полученых коллайдеров.
+            for (int i = 0; i < hit.Length; i++)
+            {
+                if (hit[i].collider.CompareTag("Player"))   //≈сли находим коллайдер с тегом "Player"
+                {
+                    //“о фиксируем клик.
+                    Debug.Log("Click");
+                    break;
+                }
+            }
+        }
     }
 }
