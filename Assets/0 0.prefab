@@ -100,7 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 530c2376faf368b43b05c93583f6bffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Menu: {fileID: 0}
   UnderWaterPump: 0
   plugged: 0
   watered: 0
@@ -109,6 +108,8 @@ MonoBehaviour:
   PlantReady: 0
   state: 0
   speed: 0
+  BWater: 0
+  BLamp: 0
   Unpluged: {fileID: 21300000, guid: 358bb941074fa5541ba038f83a9bafbe, type: 3}
   Pluged: {fileID: 21300000, guid: 0cd0ca9d21a1c7e4284243907f91853a, type: 3}
   Watered: {fileID: 21300000, guid: dc85ece08971db7489cac78afd9a6870, type: 3}
@@ -128,6 +129,7 @@ MonoBehaviour:
   Corn2: {fileID: 21300000, guid: b9b1d63b9b70bb84cbf403688a5f5f90, type: 3}
   Corn3: {fileID: 21300000, guid: ed23980a599749f4baca4818aa270c2e, type: 3}
   Die: {fileID: 21300000, guid: a4f30d2ecfa4eb44089759afa7e60763, type: 3}
+  bsterP: {fileID: 6759787961152652023, guid: c7054a623a444524a9c1e9c649a98151, type: 3}
 --- !u!61 &1709327129116395049
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -264,8 +266,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1188393737
-  m_SortingLayer: 1
+  m_SortingLayerID: -25312395
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

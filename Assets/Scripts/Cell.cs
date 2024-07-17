@@ -13,6 +13,8 @@ public class Cell : MonoBehaviour
     public bool PlantReady;
     public int state;
     public float speed;
+    public bool BWater;
+    public bool BLamp;
     public Sprite Unpluged;
     public Sprite Pluged;
     public Sprite Watered;
@@ -32,6 +34,8 @@ public class Cell : MonoBehaviour
     public Sprite Corn2;
     public Sprite Corn3;
     public Sprite Die;
+    private GameObject waterer;
+    [SerializeField] private GameObject bsterP;
     private Dictionary<string, int> map = new Dictionary<string, int>()
     {
         ["hay"] = 130,
@@ -82,6 +86,18 @@ public class Cell : MonoBehaviour
         StartCoroutine(TimeLine(Time.time));
         tRender();
     }
+    public void SetWaterer()
+    {
+        BWater = true;
+        waterer = Instantiate(bsterP);
+        waterer.transform.position = transform.position;
+        //waterer.GetComponent<Booster>().Init(gameObject.name);
+    }
+    public void underBoost(){
+        UnderWaterPump = true;
+        watered = true;
+        tRender();
+    }
     public void Water()
     {
         watered = true;
@@ -105,6 +121,9 @@ public class Cell : MonoBehaviour
     {
         plugged = false;
         watered = false;
+        if (BWater) Destroy(waterer);
+        BLamp = false;
+        BWater = false;
         Plant = "";
         state = 0;
         tRender();
@@ -131,7 +150,7 @@ public class Cell : MonoBehaviour
                 tRender();
                 yield break;
             }
-            if(PolFrame && Watdelta >= 30)
+            if(PolFrame && Watdelta >= 30 && !UnderWaterPump)
             {
                 watered = false;
                 tRender();
