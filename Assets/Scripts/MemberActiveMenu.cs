@@ -48,21 +48,26 @@ public class MemberActiveMenu : MonoBehaviour
         GameObject.Find(active_cell).gameObject.GetComponent<Cell>().Clean();
         Sbros_menu();
     }
+    public void SetWaterer()
+    {
+        GameObject.Find(active_cell).gameObject.GetComponent<Cell>().SetWaterer();
+        Sbros_menu();
+    }
     public void MenuStart()
     {
         gameObject.SetActive(true);
-        if (!GameObject.Find(active_cell).gameObject.GetComponent<Cell>().plugged)
+        if (!GameObject.Find(active_cell).gameObject.GetComponent<Cell>().plugged && !GameObject.Find(active_cell).gameObject.GetComponent<Cell>().BWater && !GameObject.Find(active_cell).gameObject.GetComponent<Cell>().BLamp)
         {
             f.SetActive(true);
         }
-        else if (GameObject.Find(active_cell).gameObject.GetComponent<Cell>().Plant == "")
+        else if (GameObject.Find(active_cell).gameObject.GetComponent<Cell>().Plant == "" && !GameObject.Find(active_cell).gameObject.GetComponent<Cell>().BWater && !GameObject.Find(active_cell).gameObject.GetComponent<Cell>().BLamp)
         {
             s.SetActive(true);
         }
         else
         {
             t.SetActive(true);
-            if (GameObject.Find(active_cell).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite == GameObject.Find(active_cell).gameObject.GetComponent<Cell>().Die)
+            if (GameObject.Find(active_cell).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite == GameObject.Find(active_cell).gameObject.GetComponent<Cell>().Die | GameObject.Find(active_cell).gameObject.GetComponent<Cell>().BWater | GameObject.Find(active_cell).gameObject.GetComponent<Cell>().BLamp)
             {
                 t.transform.GetChild(1).gameObject.SetActive(true);
             }
