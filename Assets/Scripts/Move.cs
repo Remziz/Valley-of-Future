@@ -20,6 +20,8 @@ public class PlayerMovement2D : MonoBehaviour
     public AudioClip footstepSound; // Sound clip for footsteps
     private AudioSource audioSource;
 
+    public ParticleSystem dirtParticleSystem; // Reference to the particle system
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -28,6 +30,12 @@ public class PlayerMovement2D : MonoBehaviour
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = footstepSound;
         audioSource.loop = true;
+
+        // Ensure the particle system is disabled initially
+        if (dirtParticleSystem != null)
+        {
+            dirtParticleSystem.Stop();
+        }
     }
 
     void Update()
@@ -74,6 +82,12 @@ public class PlayerMovement2D : MonoBehaviour
             {
                 audioSource.Play();
             }
+
+            // Emit dirt particles when moving
+            if (dirtParticleSystem != null)
+            {
+                dirtParticleSystem.Play();
+            }
         }
         else
         {
@@ -81,6 +95,12 @@ public class PlayerMovement2D : MonoBehaviour
             isAnimating = false;
             currentFrameIndex = 0; // Reset to first frame
             audioSource.Stop();
+
+            // Stop emitting dirt particles when not moving
+            if (dirtParticleSystem != null)
+            {
+                dirtParticleSystem.Stop();
+            }
         }
     }
 }
