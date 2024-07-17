@@ -17,6 +17,7 @@ public class gMan : MonoBehaviour
         board.SetText("$:"+money);
     }
     void Start(){
+        Time.timeScale = 1;
         mnChange(100);
         // field script
         for (int i1 = 0; i1 < 14; i1++){
