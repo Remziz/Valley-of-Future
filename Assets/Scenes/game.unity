@@ -6629,7 +6629,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.7722727, b: 0, a: 1}
+      maxColor: {r: 0.5943396, g: 0.24373929, b: 0.13176396, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -12431,9 +12431,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 10869091}
-  offset: {x: 0, y: 0, z: -10}
+  offset: {x: 0, y: 0, z: 0}
   camPositionSpeed: 5
-  shakeAmount: 0.28
+  shakeAmount: 2
+  shakeSmoothness: 1
 --- !u!114 &2059727484
 MonoBehaviour:
   m_ObjectHideFlags: 0
