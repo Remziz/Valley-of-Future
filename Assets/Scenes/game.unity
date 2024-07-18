@@ -12479,9 +12479,9 @@ MonoBehaviour:
   playerTransform: {fileID: 10869091}
   offset: {x: 0, y: 0, z: -10}
   camPositionSpeed: 5
-  shakeAmount: 2
+  shakeAmount: 1
   shakeSmoothness: 0.1
-  gimn: {fileID: 8300000, guid: 758e29686e4fdf24392e3b6934610408, type: 3}
+  gimn: {fileID: 0}
 --- !u!114 &2059727484
 MonoBehaviour:
   m_ObjectHideFlags: 0
