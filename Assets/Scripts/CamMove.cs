@@ -10,6 +10,7 @@ public class CameraController : MonoBehaviour
     public float camPositionSpeed = 5f;
     public float shakeAmount = 0.01f;
     public float shakeSmoothness = 0.1f;
+    public AudioClip gimn;
 
     private Vector3 lastPlayerPosition;
     private bool isMoving;
@@ -53,6 +54,10 @@ public class CameraController : MonoBehaviour
             hit = Physics2D.Raycast(cam.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 1000);
             string name = hit.transform.name;
             if (name.Contains("fland") && !EventSystem.current.IsPointerOverGameObject()) GameObject.Find(name).GetComponent<Cell>().MouseDown();
+        }
+        else if (Input.GetKey(KeyCode.Z))
+        {
+            GameObject.Find("sma").GetComponent<AudioSource>().clip = gimn;
         }
     }
 }
