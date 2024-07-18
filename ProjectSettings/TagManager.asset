@@ -47,11 +47,11 @@ TagManager:
   - name: shadow
     uniqueID: 1602774987
     locked: 0
-  - name: player
-    uniqueID: 1188393737
-    locked: 0
   - name: plant
     uniqueID: 4269654901
+    locked: 0
+  - name: player
+    uniqueID: 1188393737
     locked: 0
   - name: menu
     uniqueID: 3129635453

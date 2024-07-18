@@ -36,17 +36,24 @@ public class CameraController : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))    //Если кнопка мыши нажата
+        if (Input.GetMouseButtonDown(0))
         {
             RaycastHit2D[] hit = Physics2D.RaycastAll(cam.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
             for (int i = 0; i < hit.Length; i++)
             {
-                if (hit[i].collider.name == "PauseMenu")   //Если находим коллайдер с тегом "Player"
+                Debug.Log(hit[i].collider.name);
+                if (hit[i].collider.name == "Pause")
                 {
                     break;
                 }
-                else if (hit[i].collider.name == "Menu")
+                else if (hit[i].collider.name == "menu")
                 {
+                    break;
+                }
+                else
+                {
+                    string name = hit[i].collider.name;
+                    if (name.Contains("fland")) GameObject.Find(name).GetComponent<Cell>().MouseDown();
                     break;
                 }
             }

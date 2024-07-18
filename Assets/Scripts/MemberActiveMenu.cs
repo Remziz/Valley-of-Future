@@ -50,12 +50,12 @@ public class MemberActiveMenu : MonoBehaviour
     }
     public void SetWaterer()
     {
-        GameObject.Find(active_cell).gameObject.GetComponent<Cell>().SetBooster(true);
+        GameObject.Find(active_cell).gameObject.GetComponent<Cell>().SetWaterer();
         Sbros_menu();
     }
     public void SetLamp()
     {
-        GameObject.Find(active_cell).gameObject.GetComponent<Cell>().SetBooster(false);
+        GameObject.Find(active_cell).gameObject.GetComponent<Cell>().SetLamp();
         Sbros_menu();
     }
 
