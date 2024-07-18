@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class learningBook : MonoBehaviour
@@ -11,10 +12,6 @@ public class learningBook : MonoBehaviour
 
     public Sprite openedButton;
     public Sprite closedButton;
-
-    public Sprite openedBook;
-    public Sprite closedBook;
-
     private void Start()
     {
          Book = transform.GetChild(0).gameObject;
@@ -24,14 +21,14 @@ public class learningBook : MonoBehaviour
     {
         if (!bookOpen)
         {
-            GetComponent<SpriteRenderer>().sprite = openedButton;
-            Book.GetComponent<SpriteRenderer>().sprite = openedBook;
+            GetComponent<Image>().sprite = openedButton;
+            Book.SetActive(true);
             bookOpen = true;
         }
         else
         {
-            GetComponent<SpriteRenderer>().sprite = closedButton;
-            Book.GetComponent<SpriteRenderer>().sprite = closedBook;
+            GetComponent<Image>().sprite = closedButton;
+            Book.SetActive(false);
             bookOpen = false;
         }
     }
