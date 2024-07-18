@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CameraController : MonoBehaviour
 {
@@ -13,6 +15,7 @@ public class CameraController : MonoBehaviour
     private bool isMoving;
     private Camera cam;
     private float shakeTimer;
+    RaycastHit2D hit;
 
     void Start()
     {
@@ -43,29 +46,13 @@ public class CameraController : MonoBehaviour
 
         transform.position = Vector3.Lerp(transform.position, newCamPosition, camPositionSpeed * Time.deltaTime);
     }
-private void Update()
+    private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit2D[] hit = Physics2D.RaycastAll(cam.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-            for (int i = 0; i < hit.Length; i++)
-            {
-                Debug.Log(hit[i].collider.name);
-                if (hit[i].collider.name == "Pause")
-                {
-                    break;
-                }
-                else if (hit[i].collider.name == "menu")
-                {
-                    break;
-                }
-                else
-                {
-                    string name = hit[i].collider.name;
-                    if (name.Contains("fland")) GameObject.Find(name).GetComponent<Cell>().MouseDown();
-                    break;
-                }
-            }
+            hit = Physics2D.Raycast(cam.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 1000);
+            string name = hit.transform.name;
+            if (name.Contains("fland") && !EventSystem.current.IsPointerOverGameObject()) GameObject.Find(name).GetComponent<Cell>().MouseDown();
         }
     }
 }
