@@ -46,6 +46,14 @@ public class Cell : MonoBehaviour
         ["beet"] = 110,
         ["corn"] = 100 //��������
     };
+        private Dictionary<string, int> buycost = new Dictionary<string, int>()
+    {
+        ["hay"] = 20,
+        ["cabbage"] = 30,
+        ["potato"] = 70,
+        ["beet"] = 100,
+        ["corn"] = 140
+    };
     private GameObject plantsprite;
     private void Awake()
     {
@@ -83,25 +91,34 @@ public class Cell : MonoBehaviour
     }
     public void ToPlant(string name)
     {
+        if(gman.money>=buycost[name]){
+        gman.mnChange(-buycost[name]);
         state = 1;
         Plant = name;
         watered = true;
         StartCoroutine(TimeLine(Time.time));
         tRender();
+        }
     }
     public void SetWaterer()
     {
-        BWater = true;
-        waterer = Instantiate(bsterP);
-        waterer.transform.position = transform.position;
-        waterer.GetComponent<Booster>().Init(gameObject.name, true);
+        if(gman.money>=200){
+            gman.mnChange(-200);
+            BWater = true;
+            waterer = Instantiate(bsterP);
+            waterer.transform.position = transform.position;
+            waterer.GetComponent<Booster>().Init(gameObject.name, true);
+        }
     }
     public void SetLamp()
     {
-        BLamp = true;
-        waterer = Instantiate(bsterP);
-        waterer.transform.position = transform.position;
-        waterer.GetComponent<Booster>().Init(gameObject.name, false);
+        if (gman.money>=400){
+            gman.mnChange(-400);
+            BLamp = true;
+            waterer = Instantiate(bsterP);
+            waterer.transform.position = transform.position;
+            waterer.GetComponent<Booster>().Init(gameObject.name, false);
+        }
     }
     public void underBoost(bool value, bool wtr){
         if (wtr) UnderWaterPump = value;
@@ -119,11 +136,7 @@ public class Cell : MonoBehaviour
     }
     public void Collect()
     {
-        if (Plant == "hay") gman.mnChange(20);
-        else if(Plant == "cabbage") gman.mnChange(40);
-        else if(Plant == "potato") gman.mnChange(80);
-        else if(Plant == "beet") gman.mnChange(100);
-        else gman.mnChange(120);
+        gman.mnChange(buycost[Plant]*3/2);
         state = 0;
         plugged = false;
         watered = false;
@@ -140,8 +153,8 @@ public class Cell : MonoBehaviour
     public void Clean(){
         plugged = false;
         watered = false;
-        if (BWater) waterer.GetComponent<Booster>().Kill(gameObject.name); Destroy(waterer); UnderWaterPump = false;
-        if (BLamp) waterer.GetComponent<Booster>().Kill(gameObject.name); Destroy(waterer); UnderLightLamp = false;
+        if (BWater){waterer.GetComponent<Booster>().Kill(gameObject.name); Destroy(waterer);}
+        if (BLamp){waterer.GetComponent<Booster>().Kill(gameObject.name); Destroy(waterer);}
         BLamp = false;
         BWater = false;
         Plant = "";
